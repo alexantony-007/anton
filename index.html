@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anton Automobile Repairs | Precision You Can Trust in Abu Dhabi</title>
+  <meta name="description" content="Premium multi-brand automotive repair and maintenance in Abu Dhabi. Certified mechanics, transparent pricing, and unparalleled precision.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Homepage Specific Styles */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(to right, rgba(11, 12, 16, 0.9), rgba(11, 12, 16, 0.6)), url('assets/images/hero_bg.png') center/cover no-repeat;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      color: var(--text-main);
+      max-width: 600px;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Stats Bar */
+    .stats-bar {
+      background-color: var(--primary);
+      padding: 3rem 0;
+      color: var(--text-light);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+    
+    /* Why Us / Comparison Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 3rem;
+      background-color: var(--bg-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .comparison-table th, .comparison-table td {
+      padding: 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .comparison-table th {
+      background-color: rgba(0, 0, 0, 0.5);
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    
+    .comparison-table th.anton-col {
+      background-color: rgba(37, 99, 235, 0.1); /* #2563EB */
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+    }
+    
+    .comparison-table td.anton-col {
+      background-color: rgba(37, 99, 235, 0.05);
+      font-weight: 600;
+    }
+
+    /* Logo updates */
+    .logo img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    /* Service detail updates for 1-pager */
+    .service-detail {
+      margin-bottom: 4rem;
+    }
+    
+    .service-detail:nth-child(even) .grid-2 {
+      direction: rtl;
+    }
+    
+    .service-detail:nth-child(even) .grid-2 > * {
+      direction: ltr;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+    
+    .service-features li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .service-features i {
+      color: var(--primary);
+      margin-top: 5px;
+    }
+
+    /* Process Steps updates */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .process-step {
+      display: flex;
+      background: var(--bg-light);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      align-items: center;
+      gap: 2rem;
+      border-left: 4px solid var(--primary);
+      transition: var(--transition);
+    }
+    
+    .process-step:hover {
+      transform: translateX(10px);
+      box-shadow: var(--shadow);
+    }
+    
+    .step-number {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.1);
+      line-height: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .process-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .comparison-table {
+        display: block;
+        overflow-x: auto;
+      }
+      .service-detail:nth-child(even) .grid-2,
+      .service-detail:nth-child(even) .grid-2 > * {
+        direction: ltr; /* Reset for mobile */
+      }
+    }
+
+    /* Contact Form Styles */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      background-color: var(--bg-light);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      box-shadow: var(--shadow);
+    }
+    
+    @media (max-width: 992px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+    }
+
+    .info-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      background-color: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="logo">
+        <img src="assets/images/111 Anton LOGO Trans 200x200.png" alt="Anton Automobile Repairs Logo" onerror="this.outerHTML='<i class=\'fas fa-wrench\'></i> ANTON<span>.</span>'" />
+      </a>
+      
+      <button class="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="nav-links">
+        <a href="#about" class="nav-item">About Us</a>
+        <a href="#services" class="nav-item">Services</a>
+        <a href="#why-us" class="nav-item">Why Us</a>
+        <a href="#contact" class="nav-item">Contact</a>
+        <a href="#contact" class="btn btn-primary ml-4">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content animate-on-scroll fade-in-up">
+        <span class="section-subtitle" style="color: var(--primary);">Welcome to Anton Automobile Repairs</span>
+        <h1>Precision You Can<br>Trust in Abu Dhabi.</h1>
+        <p>Premium automotive repair and maintenance for those who refuse to compromise on quality and safety.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Book Inspection Today</a>
+          <a href="#services" class="btn btn-outline">Explore Our Services</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="section bg-light" id="about">
+    <div class="container">
+      <div class="grid-2">
+        <div class="animate-on-scroll fade-in-left">
+          <img src="assets/images/about_mechanic.png" alt="Mechanic examining an engine" style="border-radius: var(--radius-lg); box-shadow: var(--shadow);">
+        </div>
+        <div class="animate-on-scroll fade-in-right">
+          <span class="section-subtitle">Since 1981</span>
+          <h2>A Legacy of Automotive Excellence</h2>
+          <p>Anton Automobile Repairs LLC was founded on a simple premise: a world-class city deserves a world-class independent auto repair facility. What started as a small garage has evolved into a premier multi-brand diagnostic and repair center.</p>
+          <p>We recognized that car owners in Abu Dhabi were continually forced to choose between the exorbitant prices of main dealerships and the questionable quality of small garages. We bridged that gap.</p>
+          <ul style="margin: 1.5rem 0; padding-left: 1rem;">
+            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check text-primary" style="margin-right: 10px;"></i> IDA and IMI-Certified Technicians</li>
+            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check text-primary" style="margin-right: 10px;"></i> Upfront, transparent quoting</li>
+            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check text-primary" style="margin-right: 10px;"></i> State-of-the-art diagnostic tools</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-bar">
+    <div class="container animate-on-scroll fade-in-up">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">45+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-number">150k+</div>
+          <div class="stat-label">Vehicles Serviced</div>
+        </div>
+        <div>
+          <div class="stat-number">99%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div>
+          <div class="stat-number">14</div>
+          <div class="stat-label">Master Techs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header animate-on-scroll fade-in-up">
+        <span class="section-subtitle">Our Expertise</span>
+        <h2>Comprehensive Auto Care</h2>
+        <p>From routine maintenance to intricate engine rebuilds, our state-of-the-art facility handles it all with uncompromising precision.</p>
+      </div>
+
+      <!-- Diagnostics -->
+      <div class="service-detail animate-on-scroll fade-in-up">
+        <div class="grid-2">
+          <div>
+            <img src="assets/images/diag_tablet.png" alt="Computer diagnostics" style="border-radius: var(--border-radius); box-shadow: var(--shadow);">
+          </div>
+          <div>
+            <span class="section-subtitle">Precision First</span>
+            <h3>Computerised Diagnostics</h3>
+            <p>Modern vehicles are complex networks on wheels. Without the right diagnostic equipment, mechanics are guessing. We invest heavily in OEM-approved scanning tools for all major European, American, and Asian brands.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check-circle"></i> Check Engine Light Diagnosis</li>
+              <li><i class="fas fa-check-circle"></i> ABS & Airbag System Scans</li>
+              <li><i class="fas fa-check-circle"></i> Transmission Control Module Testing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maintenance -->
+      <div class="service-detail animate-on-scroll fade-in-up">
+        <div class="grid-2">
+          <div>
+            <img src="assets/images/maint_oil.png" alt="Oil change and maintenance" style="border-radius: var(--border-radius); box-shadow: var(--shadow);">
+          </div>
+          <div>
+            <span class="section-subtitle">Protect Your Investment</span>
+            <h3>Scheduled Maintenance</h3>
+            <p>The secret to keeping your car running for hundreds of thousands of kilometers is uncompromising preventative maintenance. We ensure every fluid and wear item is actively monitored.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check-circle"></i> Minor & Major Services</li>
+              <li><i class="fas fa-check-circle"></i> Premium Synthetic Oil Changes</li>
+              <li><i class="fas fa-check-circle"></i> Multi-point Safety Inspections</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Engine Repair -->
+      <div class="service-detail animate-on-scroll fade-in-up">
+        <div class="grid-2">
+          <div>
+            <img src="assets/images/engine_bay.png" alt="Engine repair" style="border-radius: var(--border-radius); box-shadow: var(--shadow);">
+          </div>
+          <div>
+            <span class="section-subtitle">Under The Hood</span>
+            <h3>Engine & Transmission Repair</h3>
+            <p>From strange tapping noises to major transmission slips, our master mechanics have the specialized training required to dismantle, repair, and rebuild complex drivetrains with surgical accuracy.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check-circle"></i> Timing Belt & Chain Replacements</li>
+              <li><i class="fas fa-check-circle"></i> Head Gasket & Valve Jobs</li>
+              <li><i class="fas fa-check-circle"></i> Transmission Overhauls & Clutch Replacements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section class="section bg-light" id="why-us">
+    <div class="container animate-on-scroll fade-in-up">
+      <div class="section-header">
+        <span class="section-subtitle">No Surprises</span>
+        <h2>Why Choose Anton?</h2>
+        <p>See why more drivers are making the switch from main dealerships to our independent facility.</p>
+      </div>
+      
+      <table class="comparison-table" style="margin-bottom: 4rem;">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="anton-col">Anton Repairs</th>
+            <th>Main Dealerships</th>
+            <th>Local Garages</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Diagnostic Software</td>
+            <td class="anton-col">Licensed OEM Software</td>
+            <td>Licensed OEM Software</td>
+            <td>Generic Scanners</td>
+          </tr>
+          <tr>
+            <td>Pricing Structure</td>
+            <td class="anton-col">Transparent & Competitive</td>
+            <td>Premium Marked-up Rates</td>
+            <td>Variable / Negotiable</td>
+          </tr>
+          <tr>
+            <td>Turnaround Time</td>
+            <td class="anton-col">Efficient & Prioritized</td>
+            <td>Often Long Wait Times</td>
+            <td>Variable</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Steps -->
+      <div class="process-steps">
+        <div class="process-step animate-on-scroll fade-in-left">
+          <div class="step-number">01</div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Intake & Consultation</h3>
+            <p style="margin-bottom: 0;">We listen carefully to your concerns, document the symptoms, and conduct an initial test drive if safely possible.</p>
+          </div>
+        </div>
+        
+        <div class="process-step animate-on-scroll fade-in-right stagger-1">
+          <div class="step-number">02</div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Deep Diagnostic Scan</h3>
+            <p style="margin-bottom: 0;">Using specialized equipment, we scan all onboard modules to pinpoint the exact failure mechanism.</p>
+          </div>
+        </div>
+        
+        <div class="process-step animate-on-scroll fade-in-left stagger-2">
+          <div class="step-number">03</div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Digital Report & Approval</h3>
+            <p style="margin-bottom: 0;">You receive an exact quote. We don't lift a wrench until you click 'Approve'.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header animate-on-scroll fade-in-up">
+        <h2>Get in Touch</h2>
+        <p>Book your appointment or ask us a question.</p>
+      </div>
+
+      <div class="contact-wrapper animate-on-scroll fade-in-up">
+        <!-- Contact Information -->
+        <div class="contact-details">
+          <h3>Contact Information</h3>
+          <p style="margin-bottom: 2rem;">We are located in Mussafah. Drop by or give us a call.</p>
+          
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-content">
+              <h4>Our Location</h4>
+              <p>Anton Automobile Repairs LLC<br>Mussafah M9<br>P O Box 8495<br>Abu Dhabi, UAE</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="info-content">
+              <h4>Call Us</h4>
+              <p><a href="tel:025554459" style="color: var(--text-main);">025554459</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-content">
+              <h4>Email Us</h4>
+              <p><a href="mailto:info@anton.ae" style="color: var(--text-main);">info@anton.ae</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div class="info-content">
+              <h4>Working Hours</h4>
+              <p>Monday - Saturday: 8:00 AM - 6:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Booking Form -->
+        <div class="contact-form-container">
+          <h3>Book an Appointment</h3>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" class="form-control" placeholder="050 123 4567" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="vehicle">Vehicle Make & Model</label>
+              <input type="text" id="vehicle" class="form-control" placeholder="e.g. BMW X5 2019" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="service-select">Service Required</label>
+              <select id="service-select" class="form-control" required style="appearance: auto; background-color: var(--bg-lighter);">
+                <option value="" disabled selected>Select an option</option>
+                <option value="diagnostics">Computer Diagnostics / Inspection</option>
+                <option value="maintenance">Routine Maintenance / Oil Change</option>
+                <option value="engine">Engine / Transmission Repair</option>
+                <option value="electrical">A/C or Electrical Issue</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Detailed Description</label>
+              <textarea id="message" class="form-control" placeholder="Please describe the issue or symptoms..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            <img src="assets/images/111 Anton LOGO Trans 200x200.png" alt="Anton Automobile Repairs Logo" style="max-height: 40px;" onerror="this.outerHTML='<i class=\'fas fa-wrench\'></i> ANTON<span>.</span>'" />
+          </a>
+          <p>Driven by Diagnostics, Built on Trust. Transparent Repairs. Expert Care.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why-us">Why Choose Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Diagnostics</a></li>
+            <li><a href="#services">Maintenance</a></li>
+            <li><a href="#services">Engine Repair</a></li>
+            <li><a href="#services">Electrical Systems</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Contact Us</h4>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Anton Automobile Repairs LLC<br>Mussafah M9<br>P O Box 8495, Abu Dhabi, UAE</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <span>025554459</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>info@anton.ae</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom" style="text-align: center;">
+        <p>&copy; 2026 Anton Automobile Repairs LLC. All rights reserved.</p>
+        <p class="footer-hashtags" style="margin-top: 10px; color: var(--text-dim); font-size: 0.85rem;">#AntonAutomobile #AbuDhabi #antondetailmycar</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/97125554459" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>
